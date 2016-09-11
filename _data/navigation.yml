@@ -1,0 +1,22 @@
+# main links links
+# url: https://mmistakes.github.io/minimal-mistakes/docs/navigation/
+main:
+  - title: "Android"
+    url: /android/
+
+  - title: "Java"
+    url: /java/
+
+# android links
+android:
+  - title: 第三方
+    children:
+      - title: "OkHttpClient源码解析"
+        url: /android/third-party/okhttpclient-source-analysis/
+
+# java links
+java:
+  - title: Effective Java
+    children:
+      - title: "01.工厂设计模式"
+        url: /java/effective-java/factory-pattern/
