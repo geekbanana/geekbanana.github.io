@@ -18,5 +18,5 @@ android:
 java:
   - title: Effective Java
     children:
-      - title: "01.工厂设计模式"
-        url: /java/effective-java/factory-pattern/
+      - title: "创建和销毁对象——静态工厂方法"
+        url: /java/effective-java/cado-static-factory-methods/
