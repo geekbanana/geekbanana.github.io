@@ -30,11 +30,11 @@ public static Boolean valueOf(boolean b) {
   - 不会因参数类型相同, 但参数列表的顺序不同而产生使用上的混淆.(因为可以取不同的名字)  
 2. 与构造方法相比, **静态工厂方法**不必每次调用时都创建新的对象, 因此可以保证在任何时间, 内存中只有唯一一个对象,称之为**实例控制**(instance-controlled). 实例控制确保了 a.equals(b) 且 a==b, 因此可以使用更高效的 == 来判断两个对象是否是同一个对象.
 3. 与构造方法相比, **静态工厂方法**可以return返回类型的子类型. 这种灵活性带来的优点是:  
-  - 可以返回一个非public类的对象. 适用于[基于接口的框架(interface-based frameworks)](#interface_based_frameworks)的API设计  
-  - 可以[根据不同的参数类型返回不同的对象.](#return_different_object)  
+  - 可以返回一个非public类的对象. 适用于<a href="#interface_based_frameworks"><font color="blue">基于接口的框架(interface-based frameworks)</font></a>的API设计  
+  - 可以<a href="#return_different_object"><font color="blue">根据不同的参数类型返回不同的对象.</font></a>  
   - 或者可以在API的不同release版本中返回不同的对象. 提高程序的可维护性和性能.  
-  - The class of the object returned by a static factory method need not event exist at the time the class containing the method is written. (The class of the object returned 甚至可以在 the class containing the method 书写时根本不存在). 这种灵活的设计常见于[服务提供者框架(service provider frameworks)](#service_provider_frameworks)  
-4. [可以减少创建对象的参数化冗余.](#type_inference) (JKD_1.8 中已经不存在这个问题了)  
+  - The class of the object returned by a static factory method need not event exist at the time the class containing the method is written. (The class of the object returned 甚至可以在 the class containing the method 书写时根本不存在). 这种灵活的设计常见于<a href="#service_provider_frameworks"><font color="blue">服务提供者框架(service provider frameworks)</font></a>  
+4. <a href="#type_inference"><font color="blue">可以减少创建对象的参数化冗余.</font></a> (JKD_1.8 中已经不存在这个问题了)  
 
 #### 静态工厂方法的缺点  
 1. 因为没有public或者protected构造方法, 静态工厂方法类不能被继承.  
