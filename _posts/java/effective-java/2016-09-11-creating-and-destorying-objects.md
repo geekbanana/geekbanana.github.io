@@ -53,16 +53,7 @@ public static Boolean valueOf(boolean b) {
 
 1. <a href="#telescoping_constructor_pattern"><font color="blue">重叠构造模式(telescoping constructor pattern)</font></a>, 会因可选参数过多导致创建太多的构造方式, 难以使用.  
 
-2. JavaBean模式(JavaBeans pattern), 虽然可以解决重叠构造模式的弊端, 但是JavaBean模式也导致了对象构建过程的不连续,和使用过程中的不稳定.
-> 这是一个典型的JavaBean模式的使用方法:  
-```java  
-OkHttpClient client = new OkHttpClient();
-client.setDispatcher(new Dispatcher);
-client.setRetryOnConnectionFailure(true);
-client.setConnectTimeout(10_000);
-```  
-> - 所谓不连续, 就是在setXXX()之间可能执行其他方法.  
-> - 所谓不稳定, 就是在对象被使用的过程中,仍可以通过setXXX()改变对象的属性值.  
+2. <a href="#java_beans_pattern"><font color="blue">JavaBean模式(JavaBeans pattern)</font></a>, 虽然可以解决重叠构造模式的弊端, 但是JavaBean模式也导致了对象构建过程的不连续,和使用过程中的不稳定.  
 
 3. Builder模式的缺点就是, 创建对象之前需要先构造一个builder, 对性能会有些许影响.  
 
@@ -70,7 +61,9 @@ client.setConnectTimeout(10_000);
 > 单例模式的缺点是难以测试: 除非单例类implements一个可以代表它的类型的接口, 否则无法使用模拟实现的类来代替单例类.  
 
 有以下几种实现singleton的方式:  
-1. 公有属性方式(public static final field):  
+
+1.公有属性方式(public static final field):  
+
 {% highlight java linenos %}
 public class Elvis{
   public static final Elvis INSTANCE = new Elivis();
@@ -79,7 +72,9 @@ public class Elvis{
 {% endhighlight %}  
 优点: 简洁. (性能方面不再占有优势, 因为现在的JVM可以将静态工厂方法也优化为内联方式调用)  
 缺点: 可以通过反射创建新的对象. (规避方法: 在构造函数中判断, 如果二次创建就抛出异常)  
-2. 静态工厂方法:  
+
+2.静态工厂方法:  
+
 {% highlight java linenos %}
 public class Elvis {
   private static final Elvis INSTANCE = new Elvis();
@@ -87,22 +82,23 @@ public class Elvis {
   public static Elvis getInstance(){ return INSTANCE; }
 }
 {% endhighlight %}
-优点:  
-  - 灵活, 可以在不改变API的前提下, 改变为非单例模式(可以改为每一个线程返回一个不同的对象)
-  - 与泛型有关(item 27)  
+  优点:  
+    - 灵活, 可以在不改变API的前提下, 改变为非单例模式(可以改为每一个线程返回一个不同的对象)  
+    - 与泛型有关(item 27)  
+  注意:  
+    - 以上两种单例模式的实现方式, 如果implements Serializable, 需要给每个field添加`transient`限定, 还要增加一个 `readResolve()`方法(Chapter 11)  
 
-> 注意:  
-以上两种单例模式的实现方式, 如果implements Serializable, 需要给每个field添加`transient`限定, 还要增加一个 `readResolve()`方法(Chapter 11)  
+3.枚举单例模式(目前最广泛使用的一种单例化方式)  
 
-3. 枚举单例模式(目前最广泛使用的一种单例化方式)  
 {% highlight java linenos %}
 public enum Elvis {
   INSTANCE;
 }
 {% endhighlight %}
-优点:
-  - 自动提供序列化
-  - 即使通过反序列化或者反射也无法多次实例化
+
+  优点:  
+    - 自动提供序列化  
+    - 即使通过反序列化或者反射也无法多次实例化  
 
 ## 四、使用private构造方法强化不可实例化对象  
 > 私有默认构造方法,这没什么好说的
@@ -112,14 +108,14 @@ public enum Elvis {
   - `String s = new String("stringeabc");`如果在一个循环中, 这种方式每次都创建一个String对象.  
   - `String s = "stringabc";`这种方式只会创建一个对象, 并且如果其他用到同样内容的字符串, 可以重用这个对象.  
 
-> 因此, 创建Boolean对象时, 优先选择可以重用的对象的Boolean.valueOf(String), 而不是new Boolean(String)  
-
 2. 避免自动装箱  
 
 3. 轻量级对象避免使用对象池. 现在的JVM的对轻量级对象的优化要比使用对象池好的多.  
 
 ## 六、消除不再使用的对象的引用  
-1. 出栈导致的内存泄露  
+
+1.出栈导致的内存泄露  
+
 我们来看下面这段有内存泄露风险的代码:  
 {% highlight java linenos %}
 public class Stack{
@@ -167,16 +163,19 @@ public Object pop(){
 为什么不将elements[size]置空会导致内存泄露呢?  
 如果Stack因为存入过多对象导致容量增长, 然后又出栈导致实际使用容量减少, 那么就会剩余很大一部分未使用容量. 未使用容量中又有一部分容量存储了指向之前存入对象的引用. 这就会导致之前存入的对象,虽然已经出栈, 但无法被回收.  
 
-2. 缓存导致的内存泄露  
-如果把object存入缓存, 却忘记从缓存中释放, 就会导致内存泄露.  
-如果情况允许的话, 可以使用<a href="#weah_hash_map"><font color="blue">WeakHashMap</font></a>来管理缓存. 以object作为key存入WeakHashMap, WeakHashMap会在没有外部变量引用object时, 清除此object.  
+2.缓存导致的内存泄露  
 
-3. 注册listener和callback导致的内存泄露
+如果把object存入缓存, 却忘记从缓存中释放, 就会导致内存泄露.  
+如果情况允许的话, 可以使用<a href="#weak_hash_map"><font color="blue">WeakHashMap</font></a>来管理缓存. 以object作为key存入WeakHashMap, WeakHashMap会在没有外部变量引用object时, 清除此object.  
+
+3.注册listener和callback导致的内存泄露  
+
 如果只register却没有deregister,就会导致内存泄露.  
 但如果使用WeakHashMap的话, 可以不用deregister, WeakHashMap会在没有外部引用key时自动清除key.  
 
 
-## Tips
+## Tips  
+
 ### <span id="interface_based_frameworks">1.基于接口的框架(interface-based frameworks)</span>  
 > 接口不能有静态方法. 因此, 如果一个接口命名为**Type**, 它的静态方法会被放在一个命名为**Types**的不可实例化的类中.  
 
@@ -421,7 +420,21 @@ public class OkHttpClient{
   }
 }
 {% endhighlight %}
-### <span id="weak_hash_map">7.WeakHashMap</span>  
+
+### <span id="java_beans_pattern">7.JavaBean模式</span>  
+这是一个典型的JavaBean模式的使用方法:  
+{% highlight java linenos %}
+OkHttpClient client = new OkHttpClient();
+client.setDispatcher(new Dispatcher);
+client.setRetryOnConnectionFailure(true);
+client.setConnectTimeout(10_000);
+{% endhighlight %}
+
+JavaBean模式也导致了对象构建过程的不连续,和使用过程中的不稳定：  
+所谓不连续, 就是在setXXX()之间可能执行其他方法.  
+所谓不稳定, 就是在对象被使用的过程中,仍可以通过setXXX()改变对象的属性值.  
+
+### <span id="weak_hash_map">8.WeakHashMap</span>  
 > WeakHashMap，此种Map的特点是，当除了自身有对key的引用外，此key没有其他变量引用那么此map会自动丢弃此值  
 {% highlight java linenos %}
 public class Test {  
@@ -444,4 +457,6 @@ public class Test {
 {% endhighlight %}  
 上面这段代码,将对象a作为key分别存入WeakHashMap, 然后将a置为null.  
 gc之后, WeakHashMap中却什么也没有, 因为除了WeakHashMap自身对a有引用外, 再无其他外部变量引用a, WeakHashMap就会将a回收.  
+
+
 
