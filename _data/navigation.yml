@@ -12,11 +12,11 @@ android:
   - title: 第三方
     children:
       - title: "OkHttpClient源码解析"
-        url: /android/third-party/okhttpclient-source-analysis/
+        url: /android/third-party/okhttp-source-analysis/
 
 # java links
 java:
   - title: Effective Java
     children:
-      - title: "创建和销毁对象——静态工厂方法"
+      - title: "创建和销毁对象"
         url: /java/effective-java/cado-static-factory-methods/

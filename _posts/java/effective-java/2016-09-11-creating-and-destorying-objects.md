@@ -1,6 +1,6 @@
 ---
 layout: single
-title: 创建和销毁对象——静态工厂方法
+title: 创建和销毁对象
 excerpt: "java 静态工厂方法"
 author_profile: false
 sidebar:
