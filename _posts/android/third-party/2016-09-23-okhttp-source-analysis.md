@@ -338,10 +338,13 @@ Interceptor这种链式调用模式称之为<a herf="https://zh.wikipedia.org/wi
 
 下面附上一张OkHttp的执行过程流程图, 图片来自<a href="http://blog.piasy.com/"><font color="blue">Piasy</font></a>的博客:  
 
-### 5.参考文章  
-OkHttp官方文档: http://square.github.io/okhttp/
+![OkHttp执行流程](http://odxsluszm.bkt.clouddn.com/okhttp_full_process.png)  
 
-拆轮子系列--拆OkHttp: http://blog.piasy.com/2016/07/11/Understand-OkHttp/
+
+### 5.参考文章  
+OkHttp官方文档: <http://square.github.io/okhttp/>
+
+拆轮子系列--拆OkHttp: <http://blog.piasy.com/2016/07/11/Understand-OkHttp/>
 
 
 ## Tips  
