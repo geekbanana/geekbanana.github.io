@@ -13,6 +13,8 @@ android:
     children:
       - title: "OkHttpClient源码解析"
         url: /android/third-party/okhttp-source-analysis/
+      - title: "android universal image loader模块分析"
+        url: /android/third-party/universal-image-loader-module-analysis/
   - title: 源码分析
     children:
       - title: "一张图描述View事件分发"
