@@ -12,7 +12,7 @@ categories: android third-party
 
 ## 使用方法  
 首先, 我们先来看一下它的使用法方法, 大致分为如下四步:  
-1. 配置ImageLoaderConfiguration(全局配置一次)  
+1.配置ImageLoaderConfiguration(全局配置一次)  
 {% highlight java linenos %}
 File cacheDir = StorageUtils.getCacheDirectory(context);
 ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
@@ -37,11 +37,11 @@ ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
         .writeDebugLogs()
         .build();
 {% endhighlight %}  
-2. 初始化ImageLoader(全局初始化一次)  
+2.初始化ImageLoader(全局初始化一次)  
 {% highlight java linenos %}
 ImageLoader.getInstance().init(config.build());
 {% endhighlight %}  
-3. 配置DisplayImageOptions(可选,局部配置)  
+3.配置DisplayImageOptions(可选,局部配置)  
 {% highlight java linenos %}
 DisplayImageOptions options = new DisplayImageOptions.Builder()
         .showImageOnLoading(R.drawable.ic_stub) // resource or drawable
@@ -62,7 +62,7 @@ DisplayImageOptions options = new DisplayImageOptions.Builder()
         .handler(new Handler()) // default
         .build();
 {% endhighlight %}  
-4. 加载图片  
+4.加载图片  
 下载图片, 转换为Bitmap, 显示在ImageView(或者任何实现ImageAware的类)
 {% highlight java linenos %}
 imageLoader.displayImage(imageUri, imageView, options, new ImageLoadingListener() {
