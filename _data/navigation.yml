@@ -7,6 +7,9 @@ main:
   - title: "Java"
     url: /java/
 
+  - title: "Linux"
+    url: /linux/
+
 # android links
 android:
   - title: 第三方
@@ -28,3 +31,10 @@ java:
     children:
       - title: "创建和销毁对象"
         url: /java/effective-java/cado-static-factory-methods/
+
+# linux links
+linux:
+  - title: shell
+    children:
+      - title: "Shell Script"
+        url: /linux/shell-script/shell-script/
