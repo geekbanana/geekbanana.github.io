@@ -10,6 +10,9 @@ main:
   - title: "Linux"
     url: /linux/
 
+  - title: "设计模式"
+    url: /design-patterns/
+
 # android links
 android:
   - title: 第三方
@@ -38,3 +41,10 @@ linux:
     children:
       - title: "Shell Script"
         url: /linux/shell-script/shell-script/
+
+# design-patterns links
+design-patterns:
+  - title: 设计模式
+    children:
+      - title: "面向对象的六大原则"
+        url: /design-patters/six-principles-of-oop/

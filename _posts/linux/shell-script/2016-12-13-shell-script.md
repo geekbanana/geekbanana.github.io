@@ -22,13 +22,15 @@ shell script 类似于DOS中的批处理文件(.bat), 可以将许多命令组�
 
 ## shell script 执行方式  
 假设程序为`/home/script/myshell.sh`  
+
 - 直接命令执行:shell script必须具备可读可执行权限(RX)  
-  - 绝对路径: 使用`/home/script/myshell.sh`执行  
-  - 相对路径: 假设工作目录为/home/script/, 可以使用`./myshell.sh`来执行  
-  - 变量"PATH"功能,将myshell.sh放在PATH内,即可痛过`myshell.sh`来执行  
+	- 绝对路径: 使用`/home/script/myshell.sh`执行  
+	- 相对路径: 假设工作目录为/home/script/, 可以使用`./myshell.sh`来执行  
+	- 变量"PATH"功能,将myshell.sh放在PATH内,即可痛过`myshell.sh`来执行  
+
 - 以bash进程来执行  
-  - `bash myshell.sh`  
-  - `sh myshell.sh`  
+	- `bash myshell.sh`  
+	- `sh myshell.sh`  
 
 ## shell script 编写  
 
