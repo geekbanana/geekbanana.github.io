@@ -47,4 +47,6 @@ design-patterns:
   - title: 设计模式
     children:
       - title: "面向对象的六大原则"
-        url: /design-patters/six-principles-of-oop/
+        url: /design-patterns/six-principles-of-oop/
+      - title: "单例模式"
+        url: /design-patterns/singleton/
