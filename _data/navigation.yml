@@ -27,6 +27,10 @@ android:
         url: /android/source-analysis/dispatch-touch-event-view/
       - title: "一张图描述ViewGroup事件分发"
         url: /android/source-analysis/dispatch-touch-event-viewgroup/
+      - title: "一张图描述Window内部机制之Window的添加过程"
+        url: /android/source-analysis/the-add-of-window/
+      - title: "一张图描述Window在Activity的创建过程"
+        url: /android/source-analysis/the-creation-of-window-in-activity/
 
 # java links
 java:
@@ -50,3 +54,7 @@ design-patterns:
         url: /design-patterns/six-principles-of-oop/
       - title: "单例模式"
         url: /design-patterns/singleton/
+      - title: "Builder模式"
+        url: /design-patterns/builder/
+      - title: "原型模式"
+        url: /design-patterns/prototype/
