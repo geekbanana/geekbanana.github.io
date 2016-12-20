@@ -1,6 +1,6 @@
 ---
 layout: single
-title: 单例模式
+title: 1.单例模式
 excerpt: "设计模式 单例"
 author_profile: false
 sidebar:

@@ -1,6 +1,6 @@
 ---
 layout: single
-title: 原型模式
+title: 3.原型模式
 excerpt: "设计模式 原型模式"
 author_profile: false
 sidebar:
@@ -25,6 +25,7 @@ categories: design-patterns
 ## 3.浅拷贝(影子拷贝)  
 Word大家一定都用过, 我们在修改一篇重要文档时, 通常先拷贝一个副本, 然后在副本上进行修改.
 现在我们假设类WordDocument就是一篇文档, 文档中中有文字mText和图片mImages, 可以进行clone  
+
 ```java
 public class WordDocument implements Cloneable {
 	// 文本
@@ -80,6 +81,7 @@ public class WordDocument implements Cloneable {
 ```
 
 下面我们模拟一下文档的新建, 拷贝, 修改等操作  
+
 ```java
 public class Client {
 	public static void main(String[] args) {
@@ -104,6 +106,7 @@ public class Client {
 ```
 
 输入内容如下:  
+
 ```
 // originDoc
 ++++++++++ WordDocument 构造函数 ++++++++++
@@ -145,6 +148,7 @@ image name : 图片3
 
 目前看来, 原文档(originDoc)可clone出来的文档(doc2)是两个独立的文档, 各自的修改不会影响到另一方.  
 但是当我们做如下操作时:
+
 ```java
 public class Client {
 	public static void main(String[] args) {

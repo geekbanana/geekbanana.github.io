@@ -50,11 +50,22 @@ linux:
 design-patterns:
   - title: 设计模式
     children:
-      - title: "面向对象的六大原则"
+      - title: "0.面向对象的六大原则"
         url: /design-patterns/six-principles-of-oop/
-      - title: "单例模式"
+      - title: "1.单例模式"
         url: /design-patterns/singleton/
-      - title: "Builder模式"
+      - title: "2.Builder模式"
         url: /design-patterns/builder/
-      - title: "原型模式"
+      - title: "3.原型模式"
         url: /design-patterns/prototype/
+      - title: "4.工厂模式"
+        url: /design-patterns/factory/
+      - title: "5.抽象工厂模式"
+        url: /design-patterns/abstract-factory/
+      - title: "6.策略模式"
+        url: /design-patterns/strategy/
+      - title: "7.状态模式"
+        url: /design-patterns/state/
+      - title: "8.责任链模式"
+        url: /design-patterns/chain-of-responsible/
+

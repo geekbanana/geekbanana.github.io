@@ -1,6 +1,6 @@
 ---
 layout: single
-title: 走向灵活软件之路--面向对象的六大原则
+title: 0.面向对象的六大原则
 excerpt: "设计模式 面向对象 六大原则"
 author_profile: false
 sidebar:
@@ -342,7 +342,7 @@ public class ImageLoader {
 {% endhighlight %}
 
 ## 3. 里氏替换原则(Likvos Substitution Principle, LSP)
-所有引用基类的地方,必须能够同名的使用其子类对象.
+所有引用基类的地方,必须能够透明的使用其子类对象.
 通俗的讲就是, 所有引用基类的地方, 替换为其子类对象, 可以正常运行, 不会报错.
 
 以Android中Window与View的关系为例
