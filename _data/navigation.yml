@@ -68,4 +68,34 @@ design-patterns:
         url: /design-patterns/state/
       - title: "8.责任链模式"
         url: /design-patterns/chain-of-responsible/
+      - title: "9.解释器模式"
+        url: /design-patterns/interpreter/
+      - title: "10.命令模式"
+        url: /design-patterns/command/
+      - title: "11.观察者模式"
+        url: /design-patterns/observer/
+      - title: "12.备忘录模式"
+        url: /design-patterns/memorandum/
+      - title: "13.迭代器模式"
+        url: /design-patterns/iterator/
+      - title: "14.模板模式"
+        url: /design-patterns/template/
+      - title: "15.访问者模式"
+        url: /design-patterns/visitor/
+      - title: "16.中介者模式"
+        url: /design-patterns/mediator/
+      - title: "17.代理模式"
+        url: /design-patterns/proxy/
+      - title: "18.组合模式"
+        url: /design-patterns/composite/
+      - title: "19.适配器模式"
+        url: /design-patterns/adapter/
+      - title: "20.装饰模式"
+        url: /design-patterns/decorator/
+      - title: "21.享元模式"
+        url: /design-patterns/flyweight/
+      - title: "22.外观模式"
+        url: /design-patterns/facade/
+      - title: "23.桥接模式"
+        url: /design-patterns/bridge/
 
